@@ -173,8 +173,6 @@ void initSoldiers() {
   for (int i = 0; i < soldierX.length; i++) {
     soldierX[i] = random(-SOIL_SIZE, width);
     soldierY[i] = SOIL_SIZE * ( i * 4 + floor(random(4)));
-    print("index = ", i);
-    print(" soldiery= ", soldierY[i]);
   }
 }
 
@@ -209,8 +207,6 @@ void initClocks() {
 }
 
 void draw() {
-  print("row= ", playerRow);
-  print("\nplayery= ", playerY);
 
 
   switch (gameState) {
@@ -390,8 +386,7 @@ void draw() {
         break;
       }
     }
-    print("\ngroundY = ", playerY);
-
+    
     image(groundhogDisplay, playerX, playerY);
 
     // If player is now moving?
@@ -615,8 +610,7 @@ int getEnemyIndexByRow(int row) {        // Requirement #6
   for (int i=0; i<soldierX.length; i++) {
     if (soldierY[i]== row*SOIL_SIZE) {
 
-      //print("detect in row = ");
-      //print(row);
+
       return i;
     }
   }
@@ -626,17 +620,13 @@ int getEnemyIndexByRow(int row) {        // Requirement #6
 }
 
 void drawCaution() {     
-  print("in");
+  //print("in");
   // Requirement #6
   for (int r = playerRow + 5; r <= playerRow+5; r++) {
     int index = getEnemyIndexByRow(r);
     if (index != -1) {
       float caution_x = soldierX[index];
       float caution_y = ((r)-playerRow)*SOIL_SIZE;
-      // print("x y = ");
-      //print(caution_x);
-      print("\nsoldierY= ", soldierY[index]);
-      print("\n cautiony= ", caution_y);
       image(caution, caution_x, caution_y);
     }
   }    
